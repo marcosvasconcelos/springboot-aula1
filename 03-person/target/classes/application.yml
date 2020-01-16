@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    platform: mariadb
+    driverClassName: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://192.168.15.96:3306/mydb?createDatabaseIfNotExist=true
+    username: usr_app
+    password: teste123
+    timeBetweenEvictionRunsMillis: 1000
+    testWhileIdle: true
+    validationQuery: SELECT 1
+  jpa:
+    generate-ddl: true
+    ddl-auto: update
+    show-sql: true
+    hibernate:
+      dialect: org.hibernate.dialect.MariaDB53Dialect
