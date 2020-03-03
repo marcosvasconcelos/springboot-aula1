@@ -2,7 +2,7 @@ spring:
   datasource:
     platform: mariadb
     driverClassName: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://192.168.15.96:3306/mydb?createDatabaseIfNotExist=true
+    url: jdbc:mariadb://192.168.15.163:3306/mydb?createDatabaseIfNotExist=true
     username: usr_app
     password: teste123
     timeBetweenEvictionRunsMillis: 1000
@@ -14,3 +14,10 @@ spring:
     show-sql: true
     hibernate:
       dialect: org.hibernate.dialect.MariaDB53Dialect
+  flyway:
+    url: jdbc:mariadb://192.168.15.163:3306/
+    schemas:
+    - mydb
+    user: usr_app
+    password: teste123
+    baseline-on-migrate: true

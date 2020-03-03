@@ -20,7 +20,7 @@ import org.elasticsearch.rest.RestStatus;
 import org.springframework.context.annotation.Bean;
 
 import com.google.gson.Gson;
-import com.mvs.beans.Person;
+import com.mvs.data.model.Person;
 import com.mvs.elasticsearch.ElasticsearchConfig;
 
 public class ElasticSearchRepo implements IElasticSearchRepo {

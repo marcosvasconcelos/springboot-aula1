@@ -1,4 +1,4 @@
-package com.mvs.beans;
+package com.mvs.data.model;
 
 import java.io.Serializable;
 

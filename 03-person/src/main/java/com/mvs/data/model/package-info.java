@@ -1,1 +1,1 @@
-package com.mvs.beans;
+package com.mvs.data.model;

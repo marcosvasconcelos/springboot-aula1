@@ -4,14 +4,18 @@ package com.mvs.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mvs.beans.Person;
+import com.mvs.data.vo.Person2VO;
+import com.mvs.data.vo.PersonVO;
 import com.mvs.services.PersonServices;
 
 @RestController
@@ -22,49 +26,50 @@ public class PersonController {
 	@Autowired
 	PersonServices services;
 	
-	@RequestMapping(method = RequestMethod.GET,
-			produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Person> findAll()
+	@GetMapping
+	public List<PersonVO> findAll()
 			throws Exception {
 
 		return services.findAll();
 
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET,
-			produces = MediaType.APPLICATION_JSON_VALUE)
-	public Person findById(@PathVariable("id") String id)
+	@GetMapping("/{id}")
+	public PersonVO findById(@PathVariable("id") String id)
 			throws Exception {
 		
 		return services.findById(Long.parseLong(id));
 
 	}
 	
-	@RequestMapping(method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON_VALUE,
-			consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Person create(@RequestBody Person person)
+	@PostMapping
+	public PersonVO create(@RequestBody PersonVO person)
 			throws Exception {
 
 		return services.create(person);
 
 	}
+	@PostMapping("/v2")
+	public Person2VO createV2(@RequestBody Person2VO person)
+			throws Exception {
+
+		return services.createV2(person);
+
+	}
 	
-	@RequestMapping(method = RequestMethod.PUT,
-			produces = MediaType.APPLICATION_JSON_VALUE,
-			consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Person update(@RequestBody Person person)
+	@PutMapping
+	public PersonVO update(@RequestBody PersonVO person)
 			throws Exception {
 
 		return services.update(person);
 
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET
-			)
-	public void delete(@PathVariable("id") String id)
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> delete(@PathVariable("id") String id)
 			throws Exception {
 		services.delete(Long.parseLong(id));
+		return ResponseEntity.ok().build();
 	}
 	
 	

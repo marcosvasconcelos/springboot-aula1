@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import org.springframework.stereotype.Repository;
 
-import com.mvs.beans.Person;
+import com.mvs.data.model.Person;
 
 @Repository
 public interface IElasticSearchRepo {

@@ -30,7 +30,7 @@ public class ElasticsearchConfig implements IElasticsearchConfig {
 		return port;
 	}
 
-	private int timeout = 60;
+	//private int timeout = 60;
 
 	public RestHighLevelClient client() {
 
